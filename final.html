@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Celebration 💙</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        @font-face {
+            font-family: 'Lemon Milk';
+            src: url('https://db.onlinewebfonts.com/t/718a746f364746864115f5d625d911b3.woff2') format('woff2');
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f0f9ff 0%, #bae6fd 100%);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* --- LOADING ANIMATION STYLES --- */
+        #loader-container {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #f0f9ff;
+            z-index: 1000;
+            transition: opacity 0.8s ease, visibility 0.8s;
+        }
+
+        .loader-text {
+            font-family: 'Lemon Milk', sans-serif;
+            color: #0ea5e9;
+            letter-spacing: 4px;
+            font-size: 0.75rem;
+            margin-top: 20px;
+            animation: pulseText 1.5s infinite;
+        }
+
+        .loading-bar-bg {
+            width: 200px;
+            height: 2px;
+            background: rgba(14, 165, 233, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .loading-bar-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0%;
+            background: #0ea5e9;
+            box-shadow: 0 0 10px #7dd3fc;
+            transition: width 2.5s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        @keyframes pulseText {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        /* --- MAIN CONTENT STYLES --- */
+        .final-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 40px;
+            padding: 40px 24px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 25px 50px -12px rgba(12, 74, 110, 0.15);
+            opacity: 0;
+            transform: scale(0.9) translateY(20px);
+            transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .final-card.show {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        .main-title {
+            font-family: 'Lemon Milk', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #0c4a6e;
+            text-shadow: 2px 4px 8px rgba(12, 74, 110, 0.1);
+        }
+
+        .btn-action {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 16px;
+            border-radius: 20px;
+            font-family: 'Lemon Milk', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-celebrate {
+            background: #0ea5e9;
+            color: white;
+            box-shadow: 0 10px 20px rgba(14, 165, 233, 0.2);
+        }
+
+        .btn-gifts {
+            background: white;
+            color: #0369a1;
+            border: 2px solid #0ea5e9;
+        }
+
+        .btn-action:hover {
+            transform: translateY(-5px);
+            filter: brightness(1.05);
+        }
+
+        .handwritten {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.6rem;
+            color: #0369a1;
+            margin-top: 25px;
+            opacity: 0.8;
+        }
+
+        /* Navigation Button Style */
+        .nav-btn-floating {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: white;
+            color: #0ea5e9;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-family: 'Lemon Milk', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            box-shadow: 0 10px 25px rgba(14, 165, 233, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.4s ease;
+            z-index: 200;
+            text-decoration: none;
+            border: 1px solid rgba(14, 165, 233, 0.1);
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(10px);
+        }
+
+        .nav-btn-floating.show {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .nav-btn-floating:hover {
+            transform: translateY(-5px);
+            background: #0ea5e9;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loader-container">
+        <div class="loading-bar-bg">
+            <div class="loading-bar-fill" id="load-fill"></div>
+        </div>
+        <p class="loader-text">Preparing the magic...</p>
+    </div>
+
+    <button onclick="window.history.back()" class="nav-btn-floating" id="back-btn">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" class="w-4 h-4">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+        </svg>
+        <span>Go Back</span>
+    </button>
+
+    <div class="final-card" id="card">
+        <h1 class="main-title text-3xl mb-8">Happy Birthday! 💙</h1>
+        
+        <button onclick="celebrate()" class="btn-action btn-celebrate">
+            ✨ Celebrate! ✨
+        </button>
+
+        <button onclick="showGift()" class="btn-action btn-gifts">
+            🎁 Open Your Gift
+        </button>
+
+        <p class="handwritten">You deserve the world.</p>
+    </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const fill = document.getElementById('load-fill');
+            const loader = document.getElementById('loader-container');
+            const card = document.getElementById('card');
+            const backBtn = document.getElementById('back-btn');
+
+            // 1. Start the loading bar
+            setTimeout(() => {
+                fill.style.width = '100%';
+            }, 100);
+
+            // 2. Hide loader and show card
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                loader.style.visibility = 'hidden';
+                
+                setTimeout(() => {
+                    card.classList.add('show');
+                    backBtn.classList.add('show');
+                    // 3. Auto-celebrate once
+                    celebrate();
+                }, 400);
+            }, 2800); 
+        });
+
+        function celebrate() {
+            const count = 200;
+            const defaults = {
+                origin: { y: 0.7 },
+                colors: ['#0ea5e9', '#bae6fd', '#0c4a6e', '#ffffff']
+            };
+
+            function fire(particleRatio, opts) {
+                confetti(Object.assign({}, defaults, opts, {
+                    particleCount: Math.floor(count * particleRatio)
+                }));
+            }
+
+            fire(0.25, { spread: 26, startVelocity: 55 });
+            fire(0.2, { spread: 60 });
+            fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
+            fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
+            fire(0.1, { spread: 120, startVelocity: 45 });
+        }
+
+        function showGift() {
+            window.location.href = "gifts.html";
+        }
+    </script>
+</body>
+</html>
