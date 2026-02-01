@@ -1,135 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Gifts 🎁</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    
-    <style>
-        @font-face {
-            font-family: 'Lemon Milk';
-            src: url('https://db.onlinewebfonts.com/t/718a746f364746864115f5d625d911b3.woff2') format('woff2');
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Gifts 🎁</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+    body {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #f0f9ff 0%, #bae6fd 100%);
+        font-family: 'Inter', sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        margin: 0;
+    }
 
-        body {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #f0f9ff 0%, #bae6fd 100%);
-            font-family: 'Inter', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            margin: 0;
-        }
+    @font-face {
+        font-family: 'Lemon Milk';
+        src: url('https://db.onlinewebfonts.com/t/718a746f364746864115f5d625d911b3.woff2') format('woff2');
+    }
 
-        .main-title {
-            font-family: 'Lemon Milk', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #0c4a6e;
-            text-shadow: 2px 4px 8px rgba(12, 74, 110, 0.2);
-        }
+    .main-title {
+        font-family: 'Lemon Milk', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #0c4a6e;
+        text-shadow: 2px 4px 8px rgba(12, 74, 110, 0.2);
+    }
 
-        
-        .sub-title {
-            font-family: 'Inter', sans-serif;
-            color: #0369a1;
-            font-weight: 600;
-            margin-top: -30px; 
-        }
+    .sub-title {
+        font-family: 'Inter', sans-serif;
+        color: #0369a1;
+        font-weight: 600;
+        margin-top: -30px; 
+    }
 
-        .gift-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-            width: 100%;
-            max-width: 400px;
-        }
+    .gift-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        width: 100%;
+        max-width: 400px;
+    }
 
-        .gift-btn {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            border: 2px solid #0ea5e9;
-            border-radius: 25px;
-            padding: 25px;
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-            box-shadow: 0 10px 20px rgba(12, 74, 110, 0.05);
-        }
+    .gift-btn {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+        border: 2px solid #0ea5e9;
+        border-radius: 25px;
+        padding: 25px;
+        text-align: center;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        cursor: pointer;
+        box-shadow: 0 10px 20px rgba(12, 74, 110, 0.05);
+    }
 
-        .gift-btn:hover {
-            transform: translateY(-5px) scale(1.02);
-            background: white;
-            box-shadow: 0 15px 30px rgba(14, 165, 233, 0.2);
-        }
+    .gift-btn:hover {
+        transform: translateY(-5px) scale(1.02);
+        background: white;
+        box-shadow: 0 15px 30px rgba(14, 165, 233, 0.2);
+    }
 
-        .gift-icon {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            display: block;
-        }
+    .gift-icon {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        display: block;
+    }
 
-        .gift-text {
-            font-family: 'Lemon Milk', sans-serif;
-            color: #0369a1;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-        }
+    .gift-text {
+        font-family: 'Lemon Milk', sans-serif;
+        color: #0369a1;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+    }
 
-        .nav-btn-floating {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            background: white;
-            color: #0ea5e9;
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-family: 'Lemon Milk', sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 0.1em;
-            box-shadow: 0 10px 25px rgba(14, 165, 233, 0.15);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.4s ease;
-            z-index: 200;
-            text-decoration: none;
-            border: 1px solid rgba(14, 165, 233, 0.1);
-        }
+    .nav-btn-floating {
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+        background: white;
+        color: #0ea5e9;
+        padding: 12px 24px;
+        border-radius: 50px;
+        font-family: 'Lemon Milk', sans-serif;
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+        box-shadow: 0 10px 25px rgba(14, 165, 233, 0.15);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.4s ease;
+        z-index: 200;
+        text-decoration: none;
+        border: 1px solid rgba(14, 165, 233, 0.1);
+    }
 
-        .nav-btn-floating:hover {
-            transform: translateY(-5px);
-            background: #0ea5e9;
-            color: white;
-        }
+    .nav-btn-floating:hover {
+        transform: translateY(-5px);
+        background: #0ea5e9;
+        color: white;
+    }
 
-        @keyframes modalPop {
-            0% { transform: scale(0.9); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
+    @keyframes modalPop {
+        0% { transform: scale(0.9); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
 
-        #gift-modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(12, 74, 110, 0.4);
-            backdrop-filter: blur(5px);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
+    #gift-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(12, 74, 110, 0.4);
+        backdrop-filter: blur(5px);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
 
-        .modal-content {
+    .modal-content {
         background: white;
         padding: 30px 20px;
         border-radius: 35px;
@@ -138,44 +136,107 @@
         width: 100%;
         box-shadow: 0 25px 50px rgba(0,0,0,0.2);
         max-height: 80vh;
-        overflow-y: hidden; 
+        overflow-y: hidden;
         animation: modalPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-        }
+    }
 
+    .image-grid {
+        display: none;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 15px;
+    }
 
-        .image-grid {
-            display: none;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-top: 15px;
-        }
+    .image-grid img, .video-card {
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+        border-radius: 18px;
+        opacity: 0;
+        animation: fadeIn 0.5s ease forwards;
+        background: #f1f5f9;
+        border: 1px solid #e0f2fe;
+    }
 
-        .image-grid img, .video-card {
-            width: 100%;
-            aspect-ratio: 1;
-            object-fit: cover;
-            border-radius: 18px;
-            opacity: 0;
-            animation: fadeIn 0.5s ease forwards;
-            background: #f1f5f9;
-            border: 1px solid #e0f2fe;
-        }
+    .video-card {
+        position: relative;
+        overflow: hidden;
+        background: #000;
+    }
 
-        .video-card {
-            position: relative;
-            overflow: hidden;
-            background: #000;
-        }
+    .image-grid img:nth-child(1), .video-card:nth-child(1) { animation-delay: 0.1s; }
+    .image-grid img:nth-child(2), .video-card:nth-child(2) { animation-delay: 0.2s; }
+    .image-grid img:nth-child(3), .video-card:nth-child(3) { animation-delay: 0.3s; }
+    .image-grid img:nth-child(4), .video-card:nth-child(4) { animation-delay: 0.4s; }
 
-        .image-grid img:nth-child(1), .video-card:nth-child(1) { animation-delay: 0.1s; }
-        .image-grid img:nth-child(2), .video-card:nth-child(2) { animation-delay: 0.2s; }
-        .image-grid img:nth-child(3), .video-card:nth-child(3) { animation-delay: 0.3s; }
-        .image-grid img:nth-child(4), .video-card:nth-child(4) { animation-delay: 0.4s; }
+    /* PASSWORD SCREEN */
+    #password-screen {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.5);
+        backdrop-filter: blur(3px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        z-index: 10000;
+    }
 
-    </style>
+    #password-screen input {
+        padding: 12px 16px;
+        border-radius: 12px;
+        border: none;
+        outline: none;
+        font-size: 1rem;
+        width: 200px;
+        text-align: center;
+    }
+
+    #password-screen button {
+        padding: 10px 20px;
+        border-radius: 12px;
+        border: none;
+        background: #0ea5e9;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    #password-screen button:hover {
+        background: #0284c7;
+    }
+
+    #password-screen .skip-btn {
+        background: #f97316;
+    }
+
+    #password-screen .skip-btn:hover {
+        background: #ea580c;
+    }
+</style>
 </head>
 <body>
+<!-- PASSWORD SCREEN -->
+<div id="password-screen" class="fixed inset-0 flex items-center justify-center z-50 bg-black/30 backdrop-blur-sm">
+    <div class="bg-white rounded-3xl shadow-2xl p-10 flex flex-col items-center gap-6 w-80 md:w-96">
+        <h2 class="main-title text-3xl text-sky-900">Enter Password</h2>
+        <input type="password" id="password-input" placeholder="Password"
+               class="w-full px-5 py-3 rounded-xl border border-sky-300 focus:ring-2 focus:ring-sky-400 focus:outline-none text-center text-sky-900 font-medium transition">
+        <div class="flex gap-4 w-full justify-center">
+            <button onclick="checkPassword()"
+                    class="flex-1 bg-sky-500 hover:bg-sky-600 text-white py-2 rounded-xl font-semibold shadow-md transition">Submit</button>
+            <button onclick="skipPassword()"
+                    class="flex-1 bg-orange-400 hover:bg-orange-500 text-white py-2 rounded-xl font-semibold shadow-md transition">Nhi h Password</button>
+        </div>
+        <p class="text-sm text-sky-700 italic text-center">*Hint: Ask Aarya 😉</p>
+    </div>
+</div>
 
+
+
+    <!-- ORIGINAL BODY STARTS -->
     <h1 class="main-title text-2xl md:text-3xl mb-10 text-center">Pick a Surprise 💙</h1>
     <h2 class="sub-title text-sm mb-10 text-center">ek b gift lg nhi rhe h mujhe *sorry yhi de skta hu 😭</h2>
 
@@ -211,56 +272,48 @@
     <div id="gift-modal" onclick="closeModal()">
         <div class="modal-content" id="modal-container" onclick="event.stopPropagation()">
             <h2 id="modal-title" class="main-title text-xl mb-4 text-sky-600">Opened!</h2>
-            
             <p id="modal-body" class="font-medium text-sky-900 mb-6 italic">Gift Message here...</p>
-            
             <div id="modal-images" class="image-grid mb-6"></div>
-
             <button onclick="closeModal()" class="bg-sky-500 text-white px-8 py-2 rounded-full font-bold uppercase text-xs tracking-widest">Close</button>
         </div>
     </div>
 
-    <script>
-        const gifts = {
-            1: "ㅤㅤㅤㅤPehli baat toh yh gift nhi h teko popat bnaya gya h 👺 ㅤㅤㅤㅤ",
-            2: "Redirecting you to your surprise...", 
-            3: "The 'Special' gift: Happy birthday and zada nhi bs 83 years jina h teko!! ㅤ( kya yhi h special gift!!! *wish )",
-            4: "teri bs yhi kuch photos h mere pas 🥀"
-        };
+<script>
+    const gifts = {
+        1: "ㅤㅤㅤㅤPehli baat toh yh gift nhi h teko popat bnaya gya h 👺 ㅤㅤㅤㅤ",
+        2: "Redirecting you to your surprise...", 
+        3: "The 'Special' gift: Happy birthday and zada nhi bs 83 years jina h teko!! ㅤ( kya yhi h special gift!!! *wish )",
+        4: "teri bs yhi kuch photos h mere pas 🥀"
+    };
 
-        function openGift(id) {
-            if (id === 2) {
-                setTimeout(() => {
-                    window.location.href = "https://baap21560-blip.github.io/birthday-gift-/";
-                }, 800);
-                return;
-            }
+    function openGift(id) {
+        const modal = document.getElementById('gift-modal');
+        const content = document.getElementById('modal-container');
+        const grid = document.getElementById('modal-images');
 
-            const modal = document.getElementById('gift-modal');
-            const content = document.getElementById('modal-container');
-            const grid = document.getElementById('modal-images');
-            
-            content.style.animation = 'none';
-            content.offsetHeight; 
-            content.style.animation = null;
+        content.style.animation = 'none';
+        content.offsetHeight; 
+        content.style.animation = null;
 
-            document.getElementById('modal-body').innerText = gifts[id];
-            
+        document.getElementById('modal-body').innerText = gifts[id];
+
+        // Skip images/videos if password skipped
+        if (document.getElementById('password-screen').dataset.skip === "true") {
+            grid.style.display = 'none';
+            grid.innerHTML = '';
+        } else {
             if (id === 4) {
                 grid.style.display = 'grid';
                 grid.innerHTML = `
                     <video class="video-card gift-video" controls preload="none" poster="thumb1.jpg">
                       <source src="video3.mp4" type="video/mp4">
                     </video>
-
                     <video class="video-card gift-video" controls preload="none" poster="thumb2.jpg">
                       <source src="video1.mp4" type="video/mp4">
                     </video>
-
                     <video class="video-card gift-video" controls preload="none" poster="thumb3.jpg">
                       <source src="video5.mp4" type="video/mp4">
                     </video>
-
                     <video class="video-card gift-video" controls preload="none" poster="thumb4.jpg">
                       <source src="video6.mp4" type="video/mp4">
                     </video>
@@ -278,29 +331,50 @@
                 grid.style.display = 'none';
                 grid.innerHTML = '';
             }
-
-            modal.style.display = 'flex';
         }
 
-        function closeModal() {
-            document.getElementById('modal-images').innerHTML = '';
-            document.getElementById('gift-modal').style.display = 'none';
+        if (id === 2) {
+            setTimeout(() => {
+                window.location.href = "https://baap21560-blip.github.io/birthday-gift-/";
+            }, 800);
+            return;
         }
 
-        function handleSingleVideoPlayback() {
-    const videos = document.querySelectorAll('.gift-video');
+        modal.style.display = 'flex';
+    }
 
-    videos.forEach(video => {
-        video.addEventListener('play', () => {
-            videos.forEach(v => {
-                if (v !== video) {
-                    v.pause();
-                }
+    function closeModal() {
+        document.getElementById('modal-images').innerHTML = '';
+        document.getElementById('gift-modal').style.display = 'none';
+    }
+
+    function handleSingleVideoPlayback() {
+        const videos = document.querySelectorAll('.gift-video');
+        videos.forEach(video => {
+            video.addEventListener('play', () => {
+                videos.forEach(v => {
+                    if (v !== video) v.pause();
+                });
             });
         });
-    });
-}
+    }
 
-    </script>
+    function checkPassword() {
+        const passInput = document.getElementById('password-input').value;
+        const screen = document.getElementById('password-screen');
+        if(passInput === "aarya ji ki jai") {
+            screen.style.display = 'none';
+            screen.dataset.skip = "false";
+        } else {
+            alert("Wrong password! Popat ho gya 👺");
+        }
+    }
+
+    function skipPassword() {
+        const screen = document.getElementById('password-screen');
+        screen.style.display = 'none';
+        screen.dataset.skip = "true";
+    }
+</script>
 </body>
 </html>
